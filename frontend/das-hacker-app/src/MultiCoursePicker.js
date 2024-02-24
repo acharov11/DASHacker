@@ -1,57 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import SearchableCourseDropdown from './SearchableCourseDropdown'; // Ensure this is correctly imported
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from './firebase-config'; // Ensure db is correctly imported
+import React, { useState } from 'react';
+import CoursePicker from './CoursePicker';
 
-const MultiCoursePicker = () => {
-  const [coursePickers, setCoursePickers] = useState([{ id: Date.now(), selectedCourse: '' }]);
-  const [courses, setCourses] = useState([]);
+const MultiCoursePicker = ({ onCoursesSelected }) => {
+  // State to track all selected courses
+  const [selectedCourses, setSelectedCourses] = useState([]);
 
-  useEffect(() => {
-    const loadCourses = async () => {
-      const cachedCourses = sessionStorage.getItem('courses');
-      if (cachedCourses) {
-        setCourses(JSON.parse(cachedCourses));
-      } else {
-        const querySnapshot = await getDocs(collection(db, "Courses"));
-        const fetchedCourses = [];
-        querySnapshot.forEach((doc) => {
-          fetchedCourses.push(doc.data().name); // Adjust according to your data structure
-        });
-        sessionStorage.setItem('courses', JSON.stringify(fetchedCourses));
-        setCourses(fetchedCourses);
-      }
-    };
+  const handleCourseSelect = (course, index) => {
+    console.log(`Selecting course at index ${index}:`, course);
+    // Update the specific course selection based on its index
+    const updatedCourses = [...selectedCourses];
+    updatedCourses[index] = course;
+    console.log("Updated courses array:", updatedCourses);
+    setSelectedCourses(updatedCourses);
 
-    loadCourses();
-  }, []);
-
-  const handleAddCoursePicker = () => {
-    setCoursePickers([...coursePickers, { id: Date.now(), selectedCourse: '' }]);
+    // Optionally, pass the updated courses array to a parent component or elsewhere
+    onCoursesSelected && onCoursesSelected(updatedCourses);
   };
 
-  const handleCourseSelect = (id, course) => {
-    const updatedPickers = coursePickers.map(picker => {
-      if (picker.id === id) {
-        return { ...picker, selectedCourse: course };
-      }
-      return picker;
-    });
-    setCoursePickers(updatedPickers);
+  const handleAddCoursePicker = () => {
+    // Add a new course selection slot
+    setSelectedCourses([...selectedCourses, '']);
   };
 
   return (
     <div>
-      {coursePickers.map((picker) => (
-        <SearchableCourseDropdown
-          key={picker.id}
-          options={courses}
-          placeholder="Select a course"
-          selectedCourse={picker.selectedCourse}
-          onSelect={(course) => handleCourseSelect(picker.id, course)}
-        />
+      {selectedCourses.map((_, index) => (
+        <div key={index}>
+          <CoursePicker onSelect={(course) => handleCourseSelect(course, index)} />
+        </div>
       ))}
-      <button type="button" onClick={handleAddCoursePicker}>+</button>
+      <button type="button" onClick={handleAddCoursePicker}>Add Course</button>
     </div>
   );
 };

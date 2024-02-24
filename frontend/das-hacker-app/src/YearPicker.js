@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import SearchableDropdown from './SearchableDropdown';
 
-const YearPicker = () => {
+const YearPicker = ({ onSelect }) => {
   const years = Array.from({ length: 2027 - 1995 + 1 }, (v, k) => `${1995 + k}`);
   const [selectedYear, setSelectedYear] = useState('');
 
@@ -10,7 +10,7 @@ const YearPicker = () => {
     <SearchableDropdown
       options={years}
       placeholder="Select Year"
-      onSelect={setSelectedYear}
+      onSelect={onSelect}
     />
   );
 };
