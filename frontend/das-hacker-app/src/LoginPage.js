@@ -5,16 +5,19 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'fire
 import './NewLoginPage.css'; // Ensure this CSS file includes the new styles
 import CreateAccountButton from './CreateAccountButton';
 import LoginButton from './LoginButton';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log('Login successful');
       alert('Login successful!');
+      navigate('/home');
       // Redirect the user or update the UI as needed
     } catch (error) {
       console.error("Error during login:", error.message);
