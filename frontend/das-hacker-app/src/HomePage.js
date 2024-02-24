@@ -23,7 +23,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <header>
+      <header className="header-nav">
         <nav>
           <ul>
             <li><Link to="profile">Profile</Link></li>
@@ -31,15 +31,14 @@ const HomePage = () => {
             <li><Link to="friends">Friends</Link></li>
           </ul>
         </nav>
-        {/* Logout Button */}
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} className='logoutButton'>Logout</button>
       </header>
-      <main>
+      <main className="main-content">
         <Routes>
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="search" element={<SearchPage />} />
-          <Route path="friends" element={<FriendsPage />} />
-          <Route path="/" element={<Navigate replace to="profile" />} />
+          <Route path='profile' element={<ProfilePage/>}/>
+          <Route path='search' element={<SearchPage/>}/>
+          <Route path='friends' element={<FriendsPage/>}/>
+          <Route path='/' element={<Navigate replace to="profile"/>}/>
         </Routes>
       </main>
     </div>

@@ -2,6 +2,7 @@
 // import firebase from "firebase/app";
 // import "firebase/auth";
 import { initializeApp } from "firebase/app";
+import { getFirestore } from 'firebase/firestore';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 // import { initializeApp } from "firebase/app";
@@ -23,6 +24,6 @@ const app = initializeApp(firebaseConfig);
 
 // const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
-
+export const db = getFirestore(app); // Initialize Firestore
 export const auth = getAuth(app);
 // export const auth = firebase.auth();

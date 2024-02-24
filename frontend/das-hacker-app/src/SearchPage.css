@@ -1,0 +1,52 @@
+/* Add to HomePage.css or a separate stylesheet */
+
+.search-input {
+    padding: 10px;
+    margin-right: 8px; /* Space between the input and the button */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: calc(100% - 120px); /* Adjust the width as needed */
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .search-form {
+    display: flex; /* Aligns children (dropdown, input, button) in a row */
+  }
+  
+  .search-dropdown {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px; /* Rounded corners on the left side */
+    margin-right: px; /* Ensures no space between dropdown and search input */
+  }
+  
+  .search-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 0; /* Square corners on the left side to meet the dropdown */
+    margin-right: -1px; /* Ensures no space between input and search button */
+    flex-grow: 1; /* Allows input to grow and fill available space */
+  }
+  
+  .search-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 0 4px 4px 0; /* Rounded corners on the right side */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
