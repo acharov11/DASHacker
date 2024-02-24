@@ -1,0 +1,146 @@
+# Dependencies
+/node_modules
+
+# Production build folder
+/build
+/dist
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE and editors
+/.idea
+/.vscode
+*.swp
+*.swo
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache directories (uncomment if not needed)
+# .cache
+# .parcel-cache
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Optional misc
+*.log
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.user
+*.userosscache
+*.kate-swp
+*.rhistory
+*.history
+*.vspscc
+*_i.c
+*_p.c
+*_i.h
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspx
+*.suo
+*.opendb
+*.opensdf
+*.unsuccessfulbuild
+*.ipch
+*.pdb
+*.idb
+*.res
+*.pch
+*.obj
+*.ilk
+*.map
+*.exp
+*.o
+*.gch
+*.pch
+*.d
+*.ex_
+*.out
+*.err
+
+# Storybook static build directory
+/storybook-static
+
+# Coverage directory used by tools like Istanbul
+/coverage
+
+# Next.js specific (uncomment if using Next.js)
+# /.next/
+# /out/
+
+# Gatsby files (uncomment if using Gatsby)
+# .cache/
+# public
+
+# Parcel cache (uncomment if using Parcel)
+# .parcel-cache/
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+/.grunt
+
+# TypeScript declaration files
+*.d.ts
+
+# Typings - https://github.com/typings/typings
+/typings
+
+# JetBrains IDEs (IntelliJ, PyCharm, etc.)
+*.iml
+.idea/
+
+# Vim swap files
+.*.swp
+.*.swo
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# Vi(m)
+*.un~
+
+# VS Code
+.vscode/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
