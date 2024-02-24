@@ -1,14 +1,15 @@
 // SearchableDropdown.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchableDropdown.css'; // Ensure to create this CSS file
 
-const SearchableDropdown = ({ options, placeholder }) => {
+const SearchableDropdown = ({ options, placeholder, onSelect }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showOptions, setShowOptions] = useState(false);
 
-  const filteredOptions = options.filter(
-    (option) => option.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredOptions = (options || []).filter(
+    (option) => option && option.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
 
   return (
     <div className="searchable-dropdown">
@@ -24,8 +25,11 @@ const SearchableDropdown = ({ options, placeholder }) => {
         <ul className="options-list">
           {filteredOptions.map((option, index) => (
             <li
-              key={index}
-              onMouseDown={() => setSearchTerm(option)} // onMouseDown fires before onBlur
+            key={index}
+            onMouseDown={() => {
+              setSearchTerm(option); // Set the searchTerm to the chosen option
+              onSelect(option); // Call the onSelect prop passed from the parent
+            }}
             >
               {option}
             </li>

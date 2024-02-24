@@ -6,6 +6,8 @@ import './NewLoginPage.css'; // Ensure this CSS file includes the new styles
 import CreateAccountButton from './CreateAccountButton';
 import LoginButton from './LoginButton';
 import { useNavigate } from 'react-router-dom';
+import { getFirestore } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -27,10 +29,24 @@ const LoginPage = () => {
 
   const handleCreateAccount = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      console.log('Account created successfully');
-      alert('Account created successfully!');
-      // Redirect the user or update the UI as needed
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      if (user) {
+        const db = getFirestore();
+        await setDoc(doc(db, "Users", user.uid), {
+          email: user.email
+        });
+ 
+        console.log('Account created successfully');
+        alert('Account created successfully!');
+        navigate('/home');
+        // Redirect the user or update the UI as needed
+      } else {
+        throw new Error('User creation failed');
+      }
+ 
+
+
     } catch (error) {
       console.error("Error creating account:", error.message);
       alert('Account creation failed: ' + error.message);

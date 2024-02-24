@@ -1,4 +1,3 @@
-// SearchPage.js
 import React, { useState } from 'react';
 import SearchOption from './SearchOption';
 import RefinedSearchCourse from './RefinedSearchCourse';
@@ -7,13 +6,13 @@ import './HomePage.css';
 import './SearchPage.css';
 
 const SearchPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
   const [searchType, setSearchType] = useState('Course'); // Default search type
 
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log('Searching for:', searchTerm, 'in category:', searchType);
-    // Implement your search logic here
+    // Assuming you have state hooks in RefinedSearchCourse and RefinedSearchStudent
+    // to hold the selected values, you'd use those here to perform the search.
+    console.log('Performing refined search for:', searchType);
   };
 
   return (
@@ -27,16 +26,14 @@ const SearchPage = () => {
           <SearchOption text="Course" />
           <SearchOption text="Student" />
         </select>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
+        {/* The refined search dropdowns will be rendered inline here */}
+        {searchType === 'Course' ? (
+          <RefinedSearchCourse />
+        ) : (
+          <RefinedSearchStudent />
+        )}
         <button type="submit" className="search-button">Search</button>
       </form>
-      {searchType === 'Course' ? <RefinedSearchCourse /> : <RefinedSearchStudent />}
     </div>
   );
 };
