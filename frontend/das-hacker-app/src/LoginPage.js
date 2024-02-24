@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { auth } from './firebase-config'; // Adjust the path according to your file structure
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import './NewLoginPage.css'; // Ensure this CSS file includes the new styles
+import CreateAccountButton from './CreateAccountButton';
+import LoginButton from './LoginButton';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -43,8 +45,8 @@ const LoginPage = () => {
           Password:
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
-        <button className="button login" onClick={handleLogin}>Login</button>
-        <button className="button create" onClick={handleCreateAccount}>Create Account</button>
+          <LoginButton onClick={handleLogin}/>
+          <CreateAccountButton onClick={handleCreateAccount}/>
       </div>
     </div>
   );

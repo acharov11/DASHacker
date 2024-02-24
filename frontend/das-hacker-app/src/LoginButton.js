@@ -3,7 +3,7 @@ import React from 'react';
 
 const LoginButton = ({ onClick }) => {
   return (
-    <button onClick={onClick} className="login-button">
+    <button onClick={onClick} className="button login">
       Login
     </button>
   );
