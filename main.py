@@ -7,3 +7,9 @@ firebase_admin.initialize_app(cred, {"databaseURL":"https://das-hackers-default-
 ref = db.reference('/')
 print(ref.get())
 
+danny_ref = db.reference('/Danny')
+print(danny_ref.get())
+
+
+
+
