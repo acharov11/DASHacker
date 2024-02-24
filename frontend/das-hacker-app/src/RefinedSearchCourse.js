@@ -47,7 +47,6 @@ const RefinedSearchCourse = () => {
 
   return (
     <div className="refined-search-container">
-      <h3>Refined Search for Courses</h3>
       <div className="dropdown-container">
         <SearchableDropdown options={Array.from(subjects)} placeholder="Subject / Number" />
         <SearchableDropdown options={Array.from(instructors)} placeholder="Instructor" />

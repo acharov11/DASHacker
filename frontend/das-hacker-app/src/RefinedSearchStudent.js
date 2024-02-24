@@ -11,7 +11,6 @@ const RefinedSearchStudent = () => {
 
   return (
     <div className="refined-search-container">
-      <h3>Refined Search for Students</h3>
       <div className="dropdown-container">
         <SearchableDropdown options={majors} placeholder="Major" />
         <SearchableDropdown options={statuses} placeholder="Status" />
