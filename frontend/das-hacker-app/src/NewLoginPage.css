@@ -18,11 +18,11 @@
   .form label {
     display: block;
     margin-bottom: 10px;
-    font-weight: 500; /* Slightly bold for readability */
+    font-weight: 500; /* Make text slightly bold */
   }
   
   .form input {
-    width: calc(100% - 16px); /* Prevents bleeding into the right side */
+    width: calc(100% - 16px);
     padding: 8px;
     margin-top: 5px;
     margin-bottom: 20px;
@@ -38,10 +38,16 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    width: 100%; /* Full width of the form */
+    width: 100%;
+    margin-top: 10px; /* Space between buttons */
+  }
+  
+  .button.create {
+    background-color: #28a745; /* Different color for create account button */
+    margin-top: 25px;
   }
   
   .button:hover {
-    background-color: #0056b3;
+    opacity: 0.9;
   }
   

@@ -1,15 +1,16 @@
+// LoginPage.js
 import React, { useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './firebase-config'; // Adjust the path according to your file structure
-import './NewLoginPage.css'; // Import the new CSS file here
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import './NewLoginPage.css'; // Ensure this CSS file includes the new styles
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
     try {
-      await signInWithEmailAndPassword(auth, username, password);
+      await signInWithEmailAndPassword(auth, email, password);
       console.log('Login successful');
       alert('Login successful!');
       // Redirect the user or update the UI as needed
@@ -19,18 +20,31 @@ const LoginPage = () => {
     }
   };
 
+  const handleCreateAccount = async () => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      console.log('Account created successfully');
+      alert('Account created successfully!');
+      // Redirect the user or update the UI as needed
+    } catch (error) {
+      console.error("Error creating account:", error.message);
+      alert('Account creation failed: ' + error.message);
+    }
+  };
+
   return (
     <div className="container">
       <div className="form">
         <label>
-          Username (Email):
-          <input type="email" value={username} onChange={(e) => setUsername(e.target.value)} />
+          Email:
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </label>
         <label>
           Password:
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
-        <button className="button" onClick={handleLogin}>Login</button>
+        <button className="button login" onClick={handleLogin}>Login</button>
+        <button className="button create" onClick={handleCreateAccount}>Create Account</button>
       </div>
     </div>
   );
