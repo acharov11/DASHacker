@@ -1,19 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchOption from './SearchOption';
 import RefinedSearchCourse from './RefinedSearchCourse';
 import RefinedSearchStudent from './RefinedSearchStudent';
+import { getDocs, getFirestore, collection } from 'firebase/firestore';
 import './HomePage.css'; 
 import './SearchPage.css';
 import UserTable from './UserTable';
 
 const SearchPage = () => {
   const [searchType, setSearchType] = useState('Course'); // Default search type
+  const [course, setCourse] = useState(''); // New state for course input
+  const [users, setUsers] = useState([]); // New state for users
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const db = getFirestore();
+      const usersCollection = collection(db, 'users');
+      const userSnapshot = await getDocs(usersCollection);
+      const userList = userSnapshot.docs.map(doc => doc.data());
+      setUsers(userList);
+    };
+  
+    fetchUsers();
+  }, []);
 
   const handleSearch = (event) => {
     event.preventDefault();
-    // Assuming you have state hooks in RefinedSearchCourse and RefinedSearchStudent
-    // to hold the selected values, you'd use those here to perform the search.
-    console.log('Performing refined search for:', searchType);
+    const filteredUsers = users.filter(user => 
+      Array.isArray(user.courses) && 
+      user.courses.includes(course)
+    );
+    setUsers(filteredUsers); // Update the users state with the filtered users
   };
 
   return (
