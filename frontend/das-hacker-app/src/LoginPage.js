@@ -18,7 +18,6 @@ const LoginPage = () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log('Login successful');
-      alert('Login successful!');
       navigate('/home');
       // Redirect the user or update the UI as needed
     } catch (error) {
@@ -43,7 +42,6 @@ const LoginPage = () => {
         });
  
         console.log('Account created successfully');
-        alert('Account created successfully!');
         navigate('/home');
         // Redirect the user or update the UI as needed
       } else {
