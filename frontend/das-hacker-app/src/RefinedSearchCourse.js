@@ -5,7 +5,7 @@ import { db } from './firebase-config';
 import SearchableDropdown from './SearchableDropdown';
 import './RefinedSearch.css';
 
-const RefinedSearchCourse = ({ onSelect }) => {
+const RefinedSearchCourse = ({ onUpdateFilters  }) => {
   const [subjects, setSubjects] = useState([]);
   const [instructors, setInstructors] = useState([]);
   const [yearTerms, setYearTerms] = useState([]);
@@ -72,11 +72,10 @@ const RefinedSearchCourse = ({ onSelect }) => {
   return (
     <div className="refined-search-container">
       <div className="dropdown-container">
-      <SearchableDropdown options={subjects} placeholder="Subject / Number" onSelect={(selected) => console.log("Selected subject:", selected)} />
-
-        <SearchableDropdown options={instructors} placeholder="Instructor" onSelect={(selected) => console.log("Selected subject:", selected)}/>
-        <SearchableDropdown options={yearTerms} placeholder="Year Term" onSelect={(selected) => console.log("Selected subject:", selected)}/>
-        <SearchableDropdown options={courseTitle} placeholder="Course Title" onSelect={(selected) => console.log("Selected subject:", selected)}/>
+        <SearchableDropdown options={subjects} placeholder="Subject / Number" onSelect={(selected) => onUpdateFilters('subject', selected)} />
+        <SearchableDropdown options={instructors} placeholder="Instructor" onSelect={(selected) => onUpdateFilters('instructor', selected)} />
+        <SearchableDropdown options={yearTerms} placeholder="Year Term" onSelect={(selected) => onUpdateFilters('yearTerm', selected)} />
+        <SearchableDropdown options={courseTitle} placeholder="Course Title" onSelect={(selected) => onUpdateFilters('courseTitle', selected)} />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from './firebase-config'; // Adjust the path to your Firebase config
 import ProfilePage from './ProfilePage';
 import SearchPage from './SearchPage';
+import SearchPage2 from './SearchPage2';
 import FriendsPage from './FriendsPage';
 import './HomePage.css'; // Adjust the path to your CSS file
 
@@ -36,7 +37,7 @@ const HomePage = () => {
       <main className="main-content">
         <Routes>
           <Route path='profile' element={<ProfilePage/>}/>
-          <Route path='search' element={<SearchPage/>}/>
+          <Route path='search' element={<SearchPage2/>}/>
           <Route path='friends' element={<FriendsPage/>}/>
           <Route path='/' element={<Navigate replace to="profile"/>}/>
         </Routes>
