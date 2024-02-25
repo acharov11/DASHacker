@@ -1,7 +1,7 @@
 // ChatRoom.js
 import React, { useState, useEffect, useRef } from 'react';
 import { db } from './firebase-config';
-import { collection, query, orderBy, onSnapshot, addDoc, doc, getDocs, where } from "firebase/firestore";
+import { collection, query, orderBy, onSnapshot, addDoc, doc, getDocs, where, limit, deleteDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './ChatRoomPage.css';
 
@@ -17,11 +17,12 @@ const ChatRoomPage = () => {
       };
 
     useEffect(() => {
-      const q = query(collection(db, "messages"), orderBy("createdAt"));
+        const q = query(collection(db, "messages"), orderBy("createdAt", "desc"), limit(50));
       const unsubscribe = onSnapshot(q, (querySnapshot) => {
         let messagesArray = [];
         querySnapshot.forEach((doc) => {
-          messagesArray.push(doc.data());
+        //   messagesArray.push(doc.data());
+          messagesArray.unshift({ id: doc.id, ...doc.data() });
         });
         setMessages(messagesArray);
         scrollToBottom();
@@ -60,6 +61,22 @@ const ChatRoomPage = () => {
         isSentByMe: email === auth.currentUser.email,
         sender: email,
       });
+
+        // Cleanup: Check if messages exceed 50 after adding a new one, then delete the oldest
+  const allMessagesQuery = query(collection(db, "messages"), orderBy("createdAt", "asc"));
+  getDocs(allMessagesQuery).then((querySnapshot) => {
+    const allMessages = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    if (allMessages.length > 50) {
+      const oldestMessageId = allMessages[0].id; // Assuming the first one is the oldest
+      const docRef = doc(db, "messages", oldestMessageId);
+      deleteDoc(docRef).then(() => {
+        console.log("Oldest message deleted successfully.");
+      }).catch((error) => {
+        console.error("Error deleting oldest message: ", error);
+      });
+    }
+  });
+
   
       setNewMessage("");
       scrollToBottom();
