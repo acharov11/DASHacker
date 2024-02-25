@@ -35,7 +35,8 @@ const LoginPage = () => {
         const db = getFirestore();
         await setDoc(doc(db, "Users", user.uid), {
           email: user.email,
-          courses: []
+          courses: [],
+          friends : []
         });
  
         console.log('Account created successfully');

@@ -1,0 +1,22 @@
+/* Add to your CSS file */
+.user-table-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
