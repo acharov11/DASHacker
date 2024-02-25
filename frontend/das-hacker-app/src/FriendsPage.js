@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, doc, updateDoc, getFirestore, getDocs, where, query, arrayUnion } from 'firebase/firestore';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import FriendAddBar from './FriendAddBar.js';
+import FriendTable from './FriendTable.js';
 
 const FriendsPage = () => {
   const [friendEmail, setFriendEmail] = useState('');
@@ -38,7 +39,9 @@ const FriendsPage = () => {
 
   return (
     <div className="friends-page">
-      <FriendAddBar friendEmail={friendEmail} setFriendEmail={setFriendEmail} handleSubmit={handleSubmit} /> 
+      <h1>Friend's List</h1>
+      <FriendTable />
+      <FriendAddBar friendEmail={friendEmail} setFriendEmail={setFriendEmail} handleSubmit={handleSubmit} />
     </div>
   );
 };
