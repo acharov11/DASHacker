@@ -1,0 +1,28 @@
+/* SearchPage.css */
+.search-dropdown {
+    display: flex;
+    align-items: center; /* Aligns items vertically in the center */
+    gap: 0px; /* Adds some space between the elements */
+  }
+  
+  .reset-button {
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px; /* Increase padding to make button wider */
+    cursor: pointer;
+    flex-shrink: 0; /* Prevent the button from shrinking */
+    box-sizing: content-box;
+    color: white;
+  }
+  
+  .dropdown-wrapper {
+    flex-grow: 1; /* Allows the dropdown to grow and fill available space */
+    min-width: 250px; /* Adjust this value as needed */
+  }
+  
+  /* Optional: Adjust the Select component directly if you can */
+  .react-select__control {
+    min-width: 500px; /* Ensure the dropdown has a minimum width */
+  }
+  

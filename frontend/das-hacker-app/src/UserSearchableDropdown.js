@@ -3,16 +3,28 @@ import React from 'react';
 import Select from 'react-select';
 
 const UserSearchableDropdown = ({ courses, onSelect }) => {
-  // Map course titles to the format expected by react-select
-  const options = courses.map(courseTitle => ({
-    value: courseTitle, label: courseTitle
-  }));
-
+  
+  
+  
   const handleChange = selectedOption => {
-    onSelect(selectedOption.value);
+    // Check if selectedOption is null, which indicates the clear action was used
+    if (selectedOption === null) {
+      onSelect(''); // You may decide to use an empty string or null based on how you've set up your state
+    } else {
+      onSelect(selectedOption.value);
+    }
   };
 
-  return <Select options={options} onChange={handleChange} />;
+  const options = courses.map(course => ({
+    value: course, label: course
+  }));
+
+  return <Select 
+  options={options}
+  onChange={handleChange}
+  isClearable
+  placeholder="Select..."
+  />;
 };
 
 export default UserSearchableDropdown;
