@@ -7,6 +7,7 @@ import SearchPage from './SearchPage';
 import SearchPage2 from './SearchPage2';
 import FriendsPage from './FriendsPage';
 import './HomePage.css'; // Adjust the path to your CSS file
+import ChatRoomPage from './ChatRoomPage';
 
 
 const HomePage = () => {
@@ -30,6 +31,7 @@ const HomePage = () => {
             <li><Link to="profile">Profile</Link></li>
             <li><Link to="search">Search</Link></li>
             <li><Link to="friends">Friends</Link></li>
+            <li><Link to="chatroom">Chat Room</Link></li>
           </ul>
         </nav>
         <button onClick={handleLogout} className='logoutButton'>Logout</button>
@@ -39,6 +41,7 @@ const HomePage = () => {
           <Route path='profile' element={<ProfilePage/>}/>
           <Route path='search' element={<SearchPage2/>}/>
           <Route path='friends' element={<FriendsPage/>}/>
+          <Route path='chatroom' element={<ChatRoomPage/>}/>
           <Route path='/' element={<Navigate replace to="profile"/>}/>
         </Routes>
       </main>

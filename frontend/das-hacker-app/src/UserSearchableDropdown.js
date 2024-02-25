@@ -23,7 +23,7 @@ const UserSearchableDropdown = ({ courses, onSelect }) => {
   options={options}
   onChange={handleChange}
   isClearable
-  placeholder="Select..."
+  placeholder="Choose your course..."
   />;
 };
 

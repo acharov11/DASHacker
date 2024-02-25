@@ -59,6 +59,7 @@ const SearchPage = () => {
   // Assuming that the user's courses are stored in an array under a 'courses' key
   return (
     <div>
+      <h1>Find Users by Course</h1>
     <div className="search-dropdown">
       <button onClick={resetCourseSelection} className="reset-button">Reset</button>
       <UserSearchableDropdown
