@@ -10,6 +10,7 @@ const ChatRoomPage = () => {
     const [newMessage, setNewMessage] = useState("");
     const messagesEndRef = useRef(null); // Add this line
     const [uid, setUid] = useState(null);
+    const [email, setEmail] = useState(null);
   
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -34,6 +35,7 @@ const ChatRoomPage = () => {
         onAuthStateChanged(auth, async (user) => {
           if (user) {
             setUid(user.uid);
+            setEmail(user.email);
           }
         });
       }, []);
@@ -56,7 +58,7 @@ const ChatRoomPage = () => {
         text: newMessage,
         createdAt: new Date(),
         isSentByMe: true,
-        sender: uid,
+        sender: email,
       });
   
       setNewMessage("");
@@ -70,7 +72,7 @@ const ChatRoomPage = () => {
           <div className="messages">
             {messages.map((msg, index) => (
               <p key={index} className={`message ${msg.isSentByMe ? 'sent' : 'received'}`}>
-                <strong>{msg.userEmail} </strong>{msg.text}
+                <strong>{msg.sender} </strong>{msg.text}
             </p>
             ))}
             <div ref={messagesEndRef} /> {/* Invisible element at the end of messages */}
