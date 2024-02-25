@@ -4,6 +4,7 @@ import RefinedSearchCourse from './RefinedSearchCourse';
 import RefinedSearchStudent from './RefinedSearchStudent';
 import './HomePage.css'; 
 import './SearchPage.css';
+import UserTable from './UserTable';
 
 const SearchPage = () => {
   const [searchType, setSearchType] = useState('Course'); // Default search type
@@ -33,7 +34,9 @@ const SearchPage = () => {
           <RefinedSearchStudent />
         )}
         <button type="submit" className="search-button">Search</button>
+        
       </form>
+      <UserTable/>
     </div>
   );
 };

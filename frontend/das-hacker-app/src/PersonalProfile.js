@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { doc, updateDoc, getDocs, collection } from "firebase/firestore"; 
+import { doc, getDoc, updateDoc, getDocs, collection } from "firebase/firestore"; 
 import { getFirestore } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import YearPicker from './YearPicker';
@@ -16,21 +16,43 @@ const PersonalProfile = () => {
   const [courses, setCourses] = useState([]);
 //   const [majors, setMajors] = useState('');
 
-  useEffect(() => {
+useEffect(() => {
     const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
         setUid(user.uid);
         setEmail(user.email);
+
+        // Fetch user data from Firestore
+        const db = getFirestore();
+        const userDocRef = doc(db, "Users", user.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          // Set the state with the fetched data
+          const userData = userDocSnap.data();
+          console.log("DATA: "+userData.name);
+          console.log("DATA: "+userData.year);
+          console.log("DATA: "+userData.major);
+          console.log("DATA: "+userData.courses);;
+          setName(userData.name || '');
+          setYear(userData.year || '');
+          setMajor(userData.major || '');
+          setCourses(userData.courses || []);
+        } else {
+          console.log("No such document!");
+        }
       } else {
         // User is signed out
         setUid(null);
         setEmail('');
+        // Optionally reset other states to initial values
+        setName('');
+        setYear('');
+        setMajor('');
+        setCourses([]);
       }
     });
-
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
   }, []);
 
   const handleSubmit = async () => {
@@ -71,7 +93,7 @@ const PersonalProfile = () => {
             readOnly // The email is not editable
           />
         </label>
-        <YearPicker year={year} setYear={setYear} onSelect={(selectedYear) => setYear(selectedYear)} />
+        <YearPicker value={year} setYear={setYear} onSelect={(selectedYear) => setYear(selectedYear)} />
         <MajorPicker onSelect={(selectedMajor) => setMajor(selectedMajor)}/>
         <MultiCoursePicker onCoursesSelected={setCourses}/>
         <button type="submit">Submit</button>

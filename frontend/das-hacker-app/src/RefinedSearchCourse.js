@@ -5,7 +5,7 @@ import { db } from './firebase-config';
 import SearchableDropdown from './SearchableDropdown';
 import './RefinedSearch.css';
 
-const RefinedSearchCourse = () => {
+const RefinedSearchCourse = ({ onSelect }) => {
   const [subjects, setSubjects] = useState([]);
   const [instructors, setInstructors] = useState([]);
   const [yearTerms, setYearTerms] = useState([]);
@@ -63,13 +63,20 @@ const RefinedSearchCourse = () => {
     fetchData();
   }, []);
 
+  // const onSelect = (selectedCourses) => {
+  //   console.log("Courses selected from MultiCoursePicker:", selectedCourses);
+    
+  //   // Additional logic if needed
+  // };
+
   return (
     <div className="refined-search-container">
       <div className="dropdown-container">
-        <SearchableDropdown options={subjects} placeholder="Subject / Number" />
-        <SearchableDropdown options={instructors} placeholder="Instructor" />
-        <SearchableDropdown options={yearTerms} placeholder="Year Term" />
-        <SearchableDropdown options={courseTitle} placeholder="Course Title" />
+      <SearchableDropdown options={subjects} placeholder="Subject / Number" onSelect={(selected) => console.log("Selected subject:", selected)} />
+
+        <SearchableDropdown options={instructors} placeholder="Instructor" onSelect={(selected) => console.log("Selected subject:", selected)}/>
+        <SearchableDropdown options={yearTerms} placeholder="Year Term" onSelect={(selected) => console.log("Selected subject:", selected)}/>
+        <SearchableDropdown options={courseTitle} placeholder="Course Title" onSelect={(selected) => console.log("Selected subject:", selected)}/>
       </div>
     </div>
   );
