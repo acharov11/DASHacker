@@ -80,8 +80,8 @@ useEffect(() => {
 
   return (
     <div className="HomePage">
-      <h1>Profile Page</h1>
       <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+      <h1>Profile Page</h1>
         <label>
           Name:
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -93,11 +93,14 @@ useEffect(() => {
             value={email}
             readOnly // The email is not editable
           />
-        </label>
+          Year:
         <YearPicker value={year} setYear={setYear} onSelect={(selectedYear) => setYear(selectedYear)} />
+          Major:
         <MajorPicker onSelect={(selectedMajor) => setMajor(selectedMajor)}/>
+          Courses:
         <MultiCoursePicker onCoursesSelected={setCourses}/>
-        <button type="submit">Submit</button>
+          <button type="submit" className='submit'>Submit</button>
+        </label>
       </form>
     </div>
   );

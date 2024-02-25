@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from './firebase-config';
 import SearchableDropdown from './SearchableDropdown';
-import './RefinedSearch.css'; // Ensure CSS styles are adjusted as needed
+// import './RefinedSearch.css'; // Ensure CSS styles are adjusted as needed
 
 const MajorPicker = ({ onSelect }) => {
   const [majors, setMajors] = useState([]);

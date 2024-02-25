@@ -28,12 +28,23 @@
     padding: 8px;
     margin-bottom: 10px;
   }
+
+  .HomePage button.course {
+    background-color: #8c8c8c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-sizing: content-box;
+    border-radius: 4px;
+  }
   
-  .HomePage button {
+  .HomePage button.submit {
     background-color: #007bff;
     color: #fff;
     border: none;
     cursor: pointer;
+    box-sizing: content-box;
+    border-radius: 4px;
   }
   
   /* Add more styles as needed */

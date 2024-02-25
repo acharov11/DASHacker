@@ -29,7 +29,7 @@ const MultiCoursePicker = ({ onCoursesSelected }) => {
           <CoursePicker onSelect={(course) => handleCourseSelect(course, index)} />
         </div>
       ))}
-      <button type="button" onClick={handleAddCoursePicker}>Add Course</button>
+      <button type="button" onClick={handleAddCoursePicker} className='course'>Add Course</button>
     </div>
   );
 };
