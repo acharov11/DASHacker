@@ -47,6 +47,7 @@ const FriendTable = () => {
             <th>Name</th>
             <th>Email</th>
             <th>Year</th>
+            <th>Courses</th>
           </tr>
         </thead>
         <tbody>
@@ -55,6 +56,13 @@ const FriendTable = () => {
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.year}</td>
+              <td>
+                  <ul>
+                    {user.courses && user.courses.map((course, idx) => (
+                      <li key={idx}>{course}</li>
+                    ))}
+                  </ul>
+              </td>
             </tr>
           ))}
         </tbody>

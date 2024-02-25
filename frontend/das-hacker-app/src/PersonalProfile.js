@@ -6,6 +6,7 @@ import YearPicker from './YearPicker';
 import MultiCoursePicker from './MultiCoursePicker';
 import CoursePicker from './CoursePicker';
 import MajorPicker from './MajorPicker';
+import './PersonalProfile.css';
 
 const PersonalProfile = () => {
   const [name, setName] = useState(''); // Replace '' with the initial name

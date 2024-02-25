@@ -6,7 +6,7 @@ import './HomePage.css'; // Assuming you want the same styles
 const ProfilePage = () => {
   return (
     <div className="main-content">
-      <PersonalProfile /> Include the PersonalProfile component
+      <PersonalProfile />
     </div>
   );
 };
