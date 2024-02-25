@@ -57,7 +57,7 @@ const ChatRoomPage = () => {
       await addDoc(collection(db, "messages"), {
         text: newMessage,
         createdAt: new Date(),
-        isSentByMe: true,
+        isSentByMe: email === auth.currentUser.email,
         sender: email,
       });
   
