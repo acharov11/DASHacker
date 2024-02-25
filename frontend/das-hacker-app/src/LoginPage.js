@@ -36,7 +36,10 @@ const LoginPage = () => {
         await setDoc(doc(db, "Users", user.uid), {
           email: user.email,
           courses: [],
-          friends : []
+          friends : [],
+          year : '',
+          name : '',
+          major : ''
         });
  
         console.log('Account created successfully');
