@@ -71,7 +71,7 @@ const ChatRoomPage = () => {
         <h1>Global Chat</h1>
           <div className="messages">
             {messages.map((msg, index) => (
-              <p key={index} className={`message ${msg.isSentByMe ? 'sent' : 'received'}`}>
+              <p key={index} className={`message ${msg.sender === email ? 'sent' : 'received'}`}>
                 <strong>{msg.sender} </strong>{msg.text}
             </p>
             ))}

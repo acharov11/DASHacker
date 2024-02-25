@@ -61,6 +61,7 @@ const LoginPage = () => {
   return (
     <div className="container">
       <div className="form">
+      <h1>Friends by Course</h1>
         <label>
           Email:
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
