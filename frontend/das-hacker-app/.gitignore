@@ -11,6 +11,9 @@
 # production
 /build
 
+#key
+/key/serviceAccountKey.json
+
 # misc
 .DS_Store
 .env.local
