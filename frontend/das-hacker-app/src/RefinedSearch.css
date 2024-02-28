@@ -1,0 +1,31 @@
+/* RefinedSearch.css */
+.refined-search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5px;
+  }
+  
+  h3 {
+    margin-bottom: 20px;
+  }
+  
+  .dropdown-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .dropdown {
+    padding: 10px;
+    margin-right: 10px; /* Adjust or remove based on your layout */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex-grow: 1; /* Allows dropdowns to grow and fill the space evenly */
+  }
+  
+  /* Adjust the last dropdown to not have margin on the right */
+  .dropdown-container .dropdown:last-child {
+    margin-right: 0;
+  }
+  

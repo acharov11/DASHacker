@@ -1,0 +1,51 @@
+/* PersonalProfile.css */
+
+.HomePage {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .HomePage h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .HomePage form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .HomePage label {
+    margin-bottom: 2px;
+  }
+  
+  .HomePage input[type="text"],
+  .HomePage input[type="email"],
+  .HomePage select,
+  .HomePage button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  .HomePage button.course {
+    background-color: #8c8c8c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-sizing: content-box;
+    border-radius: 4px;
+  }
+  
+  .HomePage button.submit {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-sizing: content-box;
+    border-radius: 4px;
+  }
+  
+  /* Add more styles as needed */
+  
