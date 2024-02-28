@@ -5,6 +5,9 @@
 /build
 /dist
 
+#key
+/key
+
 # Environment variables
 .env
 .env.local
